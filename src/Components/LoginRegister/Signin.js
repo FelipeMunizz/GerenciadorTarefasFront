@@ -69,7 +69,7 @@ export default function SignIn() {
                 </Link>
               </Grid>
               <Grid item>
-                <Link href="#" variant="body2" style={{ textDecoration: 'none' }}>
+                <Link href="/Register" variant="body2" style={{ textDecoration: 'none' }}>
                   {"Não possui uma conta? Registre-se"}
                 </Link>
               </Grid>
