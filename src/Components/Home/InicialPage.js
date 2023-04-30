@@ -1,4 +1,4 @@
-import { Box, Button } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 
 export default function InicialPage() {
     return (
@@ -9,19 +9,29 @@ export default function InicialPage() {
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
                 display: 'flex',
+                flexDirection: 'column',
                 justifyContent: 'center',
                 alignItems: 'center',
             }}
         >
-            <Box sx={{ mr: 2 }}>
-                <Button variant="contained" color="primary" href="/Login" sx={{paddingLeft: 5, paddingRight:5}}>
-                    Login
-                </Button>
-            </Box>
-            <Box>
-                <Button variant="contained" color="secondary" href="/Register">
-                    Registrar
-                </Button>
+            <Typography variant="h1" align="center" sx={{ color: '#fff', mb: 5 }}>
+                TASK MASTER
+            </Typography>
+            <Typography variant="subtitle1" align="center" sx={{ color: '#fff', mb: 5, fontSize: 18 }}>
+                Bem-vindo(a) ao nosso Task Master!<br /> 
+                Com ele, você pode organizar sua rotina de forma eficiente <br />e nunca mais perder prazos importantes. <br />
+            </Typography>
+            <Box sx={{ display: 'flex' }}>
+                <Box sx={{ mr: 2 }}>
+                    <Button variant="contained" color="primary" href="/Login" sx={{ paddingLeft: 5, paddingRight: 5 }}>
+                        Login
+                    </Button>
+                </Box>
+                <Box>
+                    <Button variant="contained" color="secondary" href="/Register">
+                        Registrar
+                    </Button>
+                </Box>
             </Box>
         </Box>
     );
