@@ -14,11 +14,17 @@ export default function InicialPage() {
                 alignItems: 'center',
             }}
         >
-            <Typography variant="h1" align="center" sx={{ color: '#fff', mb: 5 }}>
+            <Typography variant="h1" align="center" sx={{
+                color: '#ff6f9c',
+                mb: 5,
+                padding: 1.2,
+                borderRadius: 2.3,
+                textShadow: '2px 2px #fff, -2px -2px #fff, 2px -2px  #fff, -2px 2px  #fff'
+            }}>
                 TASK MASTER
             </Typography>
             <Typography variant="subtitle1" align="center" sx={{ color: '#fff', mb: 5, fontSize: 18 }}>
-                Bem-vindo(a) ao nosso Task Master!<br /> 
+                Bem-vindo(a) ao nosso Task Master!<br />
                 Com ele, você pode organizar sua rotina de forma eficiente <br />e nunca mais perder prazos importantes. <br />
             </Typography>
             <Box sx={{ display: 'flex' }}>

@@ -10,6 +10,7 @@ const App = () => {
   const [authenticated, setAuthenticated] = useState(false);
   const [token, setToken] = useState(null);
 
+
   const handleLogin = (responseText) => {
     setToken(responseText);
     setAuthenticated(true);
@@ -26,6 +27,7 @@ const App = () => {
           <Route path="*" element={<Unauthorized />} />
         </Routes>
       </BrowserRouter>
+      {console.log(token)}
     </div>
   );
 };
