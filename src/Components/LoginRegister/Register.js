@@ -2,6 +2,7 @@ import * as React from 'react';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { CircularProgress, Container, TextField, Link, Grid, Box, Avatar, Button, CssBaseline, Typography } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { Navigate } from 'react-router-dom';
 
 function Copyright(props) {
   return (
@@ -18,8 +19,9 @@ function Copyright(props) {
 
 const theme = createTheme();
 
-export default function SignUp() {
+const Register = () => {
   const [loading, setLoading] = React.useState(false);
+  const [isRegister, setIsRegister] = React.useState(false);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -34,11 +36,19 @@ export default function SignUp() {
       },
       body: JSON.stringify(data)
     })
-      .then(response => response.text())
-      .then(data => console.log(data))
+      .then(response => {
+        response.text();
+        setIsRegister(true);
+      })
       .catch(error => console.error(error))
-      .finally(() => setLoading(false))
+      .finally(() => {
+        setLoading(false);
+      })
   };
+
+  if(isRegister){
+    return <Navigate to='/Login' />
+  }
 
   return (
     <>
@@ -141,3 +151,5 @@ export default function SignUp() {
     </>
   );
 }
+
+export default Register

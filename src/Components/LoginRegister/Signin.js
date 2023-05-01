@@ -1,7 +1,9 @@
-import * as React from 'react';
+import { useState } from 'react';
 import { CircularProgress, Container, TextField, Link, Grid, Box, Avatar, Button, CssBaseline, Typography } from '@mui/material';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { Navigate } from 'react-router-dom';
+import axios from 'axios';
 
 function Copyright(props) {
   return (
@@ -18,28 +20,35 @@ function Copyright(props) {
 
 const theme = createTheme();
 
-export default function SignIn(props) {
-  const [loading, setLoading] = React.useState(false);
+const SignIn = () => {
+  const [loading, setLoading] = useState(false);
+  const [isLogged, setIsLogged] = useState(false);
 
-  const handleLogin = (event) => {
+  const handleLogin = async (event) => {
     event.preventDefault();
 
     setLoading(true)
 
     const info = new FormData(event.currentTarget);
-    const data = { usuario: info.get('usuario'), senha: info.get('senha') }
-    fetch('https://localhost:7140/api/Usuarios/Login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(data)
-    })
-      .then(response => response.text())
-      .then(data => props.handleLogin(data))
-      .catch(error => console.error(error))
-      .finally(() => setLoading(false))
+    const data = {
+      usuario: info.get('usuario'),
+      senha: info.get('senha')
+    }
+    try {
+      const response = await axios.post('https://localhost:7140/api/Usuarios/Login', data);
+      const token = response.data;
+      localStorage.setItem('token', token);
+      setLoading(false);
+      setIsLogged(true);
+    } catch (error) {
+      setLoading(false)
+      
+    }
   };
+
+  if(isLogged){
+    return <Navigate to='/Home' />
+  }
 
   return (
     <>
@@ -49,9 +58,7 @@ export default function SignIn(props) {
         <ThemeProvider theme={theme}>
           <Container component="main" maxWidth="xs">
             <CssBaseline />
-            <Box
-              sx={{ marginTop: 8, display: 'flex', flexDirection: 'column', alignItems: 'center' }}
-            >
+            <Box sx={{ marginTop: 8, display: 'flex', flexDirection: 'column', alignItems: 'center' }} >
               <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
                 <LockOutlinedIcon />
               </Avatar>
@@ -85,3 +92,5 @@ export default function SignIn(props) {
     </>
   );
 }
+
+export default SignIn

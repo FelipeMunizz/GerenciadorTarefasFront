@@ -1,6 +1,7 @@
 import { Box, Button, Typography } from "@mui/material";
 
-export default function InicialPage() {
+const InicialPage = () => {
+    
     return (
         <Box
             sx={{
@@ -15,11 +16,11 @@ export default function InicialPage() {
             }}
         >
             <Typography variant="h1" align="center" sx={{
-                color: '#ff6f9c',
+                color: '#fff',
                 mb: 5,
                 padding: 1.2,
                 borderRadius: 2.3,
-                textShadow: '2px 2px #fff, -2px -2px #fff, 2px -2px  #fff, -2px 2px  #fff'
+                textShadow: '2px 2px #ff6f9c, -2px -2px #ff6f9c, 2px -2px  #ff6f9c, -2px 2px  #ff6f9c'
             }}>
                 TASK MASTER
             </Typography>
@@ -42,3 +43,5 @@ export default function InicialPage() {
         </Box>
     );
 }
+
+export default InicialPage
