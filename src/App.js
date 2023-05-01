@@ -1,13 +1,13 @@
 import './App.css'
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import SignIn from './Components/LoginRegister/Signin';
 import Register from './Components/LoginRegister/Register';
-import Home from './Components/Home/Home';
 import NotFound from './Components/NotFound/NotFound';
 import InicialPage from './Components/Home/InicialPage';
+import Dashboard from './Components/Home/Dashboard'
 
 const App = () => {
-  const token  = localStorage.getItem('token');
+  const autenticate = !!localStorage.getItem('token');
 
   return (
     <div className="App">
@@ -16,7 +16,7 @@ const App = () => {
           <Route path='/' element={<InicialPage />} />
           <Route path='/Login' element={<SignIn />} />
           <Route path='/Register' element={<Register />} />
-          <Route path='/Home' element={token ? <Home /> : <NotFound />} />
+          <Route path='/Dashboard' element={autenticate? <Dashboard /> : <Navigate to='/Login'/>} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

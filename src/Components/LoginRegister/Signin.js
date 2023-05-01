@@ -37,7 +37,7 @@ const SignIn = () => {
     try {
       const response = await axios.post('https://localhost:7140/api/Usuarios/Login', data);
       const token = response.data;
-      localStorage.setItem('token', token);
+      localStorage.setItem('token', token)
       setLoading(false);
       setIsLogged(true);
     } catch (error) {

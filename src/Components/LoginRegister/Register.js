@@ -1,8 +1,9 @@
-import * as React from 'react';
+import { useState } from 'react';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { CircularProgress, Container, TextField, Link, Grid, Box, Avatar, Button, CssBaseline, Typography } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Navigate } from 'react-router-dom';
+import axios from 'axios';
 
 function Copyright(props) {
   return (
@@ -20,33 +21,27 @@ function Copyright(props) {
 const theme = createTheme();
 
 const Register = () => {
-  const [loading, setLoading] = React.useState(false);
-  const [isRegister, setIsRegister] = React.useState(false);
+  const [loading, setLoading] = useState(false);
+  const [isRegister, setIsRegister] = useState(false);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     setLoading(true)
     const info = new FormData(event.currentTarget);
     const data = { nome: info.get('nome'), sobrenome: info.get('sobrenome'), usuario: info.get('usuario'), email: info.get('email'), senha: info.get('senha') }
-    fetch('https://localhost:7140/api/Usuarios/Registrar', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(data)
-    })
-      .then(response => {
-        response.text();
-        setIsRegister(true);
-      })
-      .catch(error => console.error(error))
-      .finally(() => {
-        setLoading(false);
-      })
+    try {
+
+      await axios.post('https://localhost:7140/api/Usuarios/Registrar', data);
+      setLoading(false)
+      setIsRegister(true)
+    } catch (error) {
+      setLoading(false);
+      setIsRegister(false);
+    }
   };
 
-  if(isRegister){
+  if (isRegister) {
     return <Navigate to='/Login' />
   }
 
