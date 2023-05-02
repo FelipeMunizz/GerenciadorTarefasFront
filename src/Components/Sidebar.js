@@ -42,6 +42,10 @@ function Sidebar() {
     navigate('/Project');
   };
 
+  function handleProjectMembersClick() {
+    navigate('/ProjetctMembers');
+  };
+
   return (
     <StyledDrawer variant="permanent" anchor="left">
       <List>
@@ -57,7 +61,7 @@ function Sidebar() {
           </ListItemIcon>
           <ListItemText primary="Projetos" />
         </ListItemButton>
-        <ListItemButton>
+        <ListItemButton onClick={handleProjectMembersClick}>
           <ListItemIcon>
             <PeopleIcon />
           </ListItemIcon>

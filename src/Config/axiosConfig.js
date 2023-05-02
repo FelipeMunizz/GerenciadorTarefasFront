@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const instance = axios.create({
+const axiosConfig = axios.create({
   baseURL: 'https://localhost:7140/api/',
 });
 
@@ -8,7 +8,7 @@ const instance = axios.create({
 const publicRoutes = ['Usuarios/Login', 'Usuarios/Registrar','Usuarios/RedefinirSenha'];
 
 // Adiciona o token de autorização a todas as requisições que não são rotas públicas
-instance.interceptors.request.use(
+axiosConfig.interceptors.request.use(
   config => {
     if (!publicRoutes.includes(config.url)) { // Verifica se a rota atual não está na lista de rotas públicas
       const token = localStorage.getItem('token');
@@ -23,4 +23,4 @@ instance.interceptors.request.use(
   }
 );
 
-export default instance;
+export default axiosConfig;
