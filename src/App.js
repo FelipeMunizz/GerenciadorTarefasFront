@@ -13,10 +13,10 @@ const App = () => {
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path='/' element={<InicialPage />} />
-          <Route path='/Login' element={<SignIn />} />
-          <Route path='/Register' element={<Register />} />
-          <Route path='/Dashboard' element={autenticate? <Dashboard /> : <Navigate to='/Login'/>} />
+          <Route path='/' element={!autenticate ? <InicialPage /> : <Navigate to='/Dashboard' />} />
+          <Route path='/Login' element={!autenticate ? <SignIn /> : <Navigate to='/Dashboard' />} />
+          <Route path='/Register' element={!autenticate ? <Register /> : <Navigate to='/Dashboard' />} />
+          <Route path='/Dashboard' element={autenticate ? <Dashboard /> : <Navigate to='/Login' />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

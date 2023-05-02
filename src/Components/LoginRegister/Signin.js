@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { CircularProgress, Container, TextField, Link, Grid, Box, Avatar, Button, CssBaseline, Typography } from '@mui/material';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { Navigate } from 'react-router-dom';
+import Dashboard from '../Home/Dashboard'
 import axios from 'axios';
 
 function Copyright(props) {
@@ -40,14 +40,18 @@ const SignIn = () => {
       localStorage.setItem('token', token)
       setLoading(false);
       setIsLogged(true);
+
     } catch (error) {
+
       setLoading(false)
-      
+
     }
   };
-
-  if(isLogged){
-    return <Navigate to='/Home' />
+  
+  if (isLogged) {
+    return (
+      <Dashboard />
+    )
   }
 
   return (
