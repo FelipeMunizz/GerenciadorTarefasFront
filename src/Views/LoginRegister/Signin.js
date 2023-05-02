@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { CircularProgress, Container, TextField, Link, Grid, Box, Avatar, Button, CssBaseline, Typography } from '@mui/material';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import Dashboard from '../Home/Dashboard'
+import Dashboard from '../Menu/Dashboard'
 import axios from 'axios';
 
 function Copyright(props) {
@@ -49,9 +49,9 @@ const SignIn = () => {
   };
   
   if (isLogged) {
-    return (
-      <Dashboard />
-    )
+    
+    <Dashboard />
+    return window.location.reload()
   }
 
   return (

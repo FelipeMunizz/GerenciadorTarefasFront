@@ -1,10 +1,12 @@
 import './App.css'
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import SignIn from './Components/LoginRegister/Signin';
-import Register from './Components/LoginRegister/Register';
-import NotFound from './Components/NotFound/NotFound';
-import InicialPage from './Components/Home/InicialPage';
-import Dashboard from './Components/Home/Dashboard'
+import SignIn from './Views/LoginRegister/Signin';
+import Register from './Views/LoginRegister/Register';
+import NotFound from './Views/NotFound/NotFound';
+import InicialPage from './Views/InicialPage';
+import Dashboard from './Views/Menu/Dashboard';
+import Project from './Views/Menu/Project'
+import Sidebar from './Components/Sidebar/Sidebar';
 
 const App = () => {
   const autenticate = !!localStorage.getItem('token');
@@ -17,9 +19,11 @@ const App = () => {
           <Route path='/Login' element={!autenticate ? <SignIn /> : <Navigate to='/Dashboard' />} />
           <Route path='/Register' element={!autenticate ? <Register /> : <Navigate to='/Dashboard' />} />
           <Route path='/Dashboard' element={autenticate ? <Dashboard /> : <Navigate to='/Login' />} />
+          <Route path='/Project' element={autenticate ? <Project /> : <Navigate to='/Login' />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
-      </BrowserRouter>
+        {autenticate && <Sidebar />}
+      </BrowserRouter>      
     </div>
   );
 };
