@@ -4,6 +4,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Dashboard from '../Menu/Dashboard'
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 function Copyright(props) {
   return (
@@ -19,10 +20,12 @@ function Copyright(props) {
 }
 
 const theme = createTheme();
+const sxButton = { display: 'flex' }
 
 const SignIn = () => {
   const [loading, setLoading] = useState(false);
   const [isLogged, setIsLogged] = useState(false);
+  const navigate = useNavigate();
 
   const handleLogin = async (event) => {
     event.preventDefault();
@@ -47,15 +50,22 @@ const SignIn = () => {
 
     }
   };
-  
+
+  function handleInicial(){
+    navigate('/')
+  }
+
   if (isLogged) {
-    
+
     <Dashboard />
     return window.location.reload()
   }
 
   return (
     <>
+      <Button type='button' style={sxButton} onClick={handleInicial}>
+        voltar
+      </Button>
       {loading ? <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
         <CircularProgress size={60} color='secondary' />
       </div> :

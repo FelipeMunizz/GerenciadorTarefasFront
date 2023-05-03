@@ -65,7 +65,7 @@ function Sidebar() {
           <ListItemIcon>
             <PeopleIcon />
           </ListItemIcon>
-          <ListItemText primary="Integrantes do Projeto" />
+          <ListItemText primary="Equipe" />
         </ListItemButton>
       </List>
       <StyledList sx={{ marginTop: 'auto' }}>
