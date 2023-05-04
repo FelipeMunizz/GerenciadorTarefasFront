@@ -10,6 +10,7 @@ import DashboardIcon from '@mui/icons-material/Dashboard';
 import FolderIcon from '@mui/icons-material/Folder';
 import PeopleIcon from '@mui/icons-material/People';
 import LogoutIcon from '@mui/icons-material/Logout';
+import { ListSubheader } from '@mui/material';
 
 const drawerWidth = 240;
 
@@ -61,12 +62,14 @@ function Sidebar() {
           </ListItemIcon>
           <ListItemText primary="Projetos" />
         </ListItemButton>
-        <ListItemButton onClick={handleProjectMembersClick}>
-          <ListItemIcon>
-            <PeopleIcon />
-          </ListItemIcon>
-          <ListItemText primary="Equipe" />
-        </ListItemButton>
+        <ListSubheader>
+          <ListItemButton onClick={handleProjectMembersClick}>
+            <ListItemIcon>
+              <PeopleIcon />
+            </ListItemIcon>
+            <ListItemText primary="Equipe" />
+          </ListItemButton>
+        </ListSubheader>
       </List>
       <StyledList sx={{ marginTop: 'auto' }}>
         <ListItemButton onClick={handleLogout}>

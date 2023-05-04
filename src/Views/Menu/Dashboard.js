@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Typography, Container, Box, Grid, Button } from '@mui/material';
+import { Typography, Container, Box, Grid } from '@mui/material';
 import axiosConfig from './../../Config/axiosConfig';
 import jwt_decode from 'jwt-decode';
 
@@ -25,10 +25,6 @@ const Dashboard = () => {
     fetchData();
   }, [idUsuario]);
 
-  function handleMembers(){
-
-  }
-
   return (
     <>
       <Box
@@ -43,14 +39,7 @@ const Dashboard = () => {
                   {user.nome} {user.sobrenome}
                 </Typography>
               </Box>
-            </Grid>
-            <Grid item xs={12} md={8}>
-              <Button type="button" variant="contained" sx={{ mt: 4, mb: 2 }} onClick={handleMembers}>
-                Adicionar Membros a Equipe
-              </Button>
-              <Box sx={item}>
-              </Box>
-            </Grid>
+            </Grid>            
           </Grid>
         </Container>
       </Box>
