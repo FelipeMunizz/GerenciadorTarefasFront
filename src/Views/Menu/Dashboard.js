@@ -22,7 +22,6 @@ const Dashboard = () => {
     const fetchData = async () => {
       const result = await axiosConfig.get('Usuarios/ObterUsuario/' + idUsuario);
       setUser(result.data);
-      console.log(result)
     };
     fetchData();
   }, [idUsuario]);
