@@ -87,7 +87,7 @@ const SignIn = () => {
                 </Button>
                 <Grid container>
                   <Grid item xs>
-                    <Link href="#" variant="body2" style={{ textDecoration: 'none' }}>
+                    <Link href="/ForgotPassword" variant="body2" style={{ textDecoration: 'none' }}>
                       Esqueceu a Senha?
                     </Link>
                   </Grid>
