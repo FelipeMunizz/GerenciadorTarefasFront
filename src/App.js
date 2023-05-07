@@ -10,6 +10,7 @@ import Project from './Views/Menu/Project';
 import Sidebar from './Components/Sidebar';
 import ProjetctMembers from './Views/Menu/ProjetctMembers';
 import { Grid } from '@mui/material';
+import ForgotUser from './Views/Authenticate/ForgotUser';
 
 const App = () => {
   const autenticate = !!localStorage.getItem('token');
@@ -23,12 +24,13 @@ const App = () => {
               <Sidebar />
             </Grid>
           )}
-          <Grid item xs={autenticate ? 10 : 12}>
+          <Grid item sm={autenticate ? 10 : 12} md={autenticate ? 10 : 12} lg={autenticate ? 10 : 12} >
             <Routes>
               <Route path='/' element={!autenticate ? <InicialPage /> : <Navigate to='/Dashboard' />} />
               <Route path='/Login' element={!autenticate ? <SignIn /> : <Navigate to='/Dashboard' />} />
               <Route path='/Register' element={!autenticate ? <Register /> : <Navigate to='/Dashboard' />} />
               <Route path='/ForgotPassword' element={!autenticate ? <ForgotPassword /> : <Navigate to='/Dashboard' />} />
+              <Route path='/ForgotUser' element={!autenticate ? <ForgotUser /> : <Navigate to='/Dashboard' />} />
               <Route path='/Dashboard' element={autenticate ? <Dashboard /> : <Navigate to='/Login' />} />
               <Route path='/Project' element={autenticate ? <Project /> : <Navigate to='/Login' />} />
               <Route path='/ProjetctMembers' element={autenticate ? <ProjetctMembers /> : <Navigate to='/Login' />} />

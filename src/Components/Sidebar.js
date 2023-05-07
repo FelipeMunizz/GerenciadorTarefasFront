@@ -1,14 +1,10 @@
-import { useState, useEffect } from 'react';
 import { styled } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
 import DashboardIcon from '@mui/icons-material/Dashboard';
-import DensitySmallIcon from '@mui/icons-material/DensitySmall';
 import FolderIcon from '@mui/icons-material/Folder';
 import PeopleIcon from '@mui/icons-material/People';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { ListSubheader, Typography, ListItemButton, ListItemIcon, Drawer, List, ListItemText } from '@mui/material';
-import axiosConfig from '../Config/axiosConfig';
-import jwt_decode from 'jwt-decode';
 import { Link } from 'react-router-dom';
 
 const drawerWidth = 240;
@@ -45,20 +41,7 @@ const StyledList = styled(List)(({ theme }) => ({
 }));
 
 function Sidebar() {
-  const [user, setUser] = useState([]);
   const navigate = useNavigate();
-  const token = localStorage.getItem('token')
-  const decodedToken = jwt_decode(token)
-  const idUsuario = decodedToken.idUsuario;
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const result = await axiosConfig.get('Usuarios/ObterUsuario/' + idUsuario);
-      setUser(result.data);
-    };
-    fetchData();
-  }, [idUsuario]);
-
   function handleDashboardClick() {
     navigate('/Dashboard');
   };
@@ -74,12 +57,6 @@ function Sidebar() {
   return (
     <StyledDrawer variant="permanent" anchor="left">
       <List>
-        <ListItemButton onClick={handleDashboardClick} sx={{ paddingTop: 4, paddingBottom: 4 }}>
-          <ListItemIcon>
-            <DensitySmallIcon />
-          </ListItemIcon>
-          <ListItemText primary={user.nome + ' ' + user.sobrenome} />
-        </ListItemButton>
         <ListItemButton onClick={handleDashboardClick}>
           <ListItemIcon>
             <DashboardIcon />

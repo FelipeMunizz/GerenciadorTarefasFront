@@ -4,7 +4,7 @@ const axiosConfig = axios.create({
   baseURL: 'https://localhost:7140/api/',
 });
 
-const publicRoutes = ['Usuarios/Login', 'Usuarios/Registrar','Usuarios/RedefinirSenha'];
+const publicRoutes = ['Usuarios/Login', 'Usuarios/Registrar','Usuarios/RedefinirSenha', 'Usuarios/EnviarUsuario'];
 
 axiosConfig.interceptors.request.use(
   config => {

@@ -41,10 +41,7 @@ const Dashboard = () => {
 
   return (
     <>
-      <Box
-        component="section"
-        sx={{ display: 'flex', overflow: 'hidden' }}
-      >
+      <Box component="section" sx={{ display: 'flex', overflow: 'hidden' }} >
         <Container sx={{ mt: 2, mb: 30, display: 'flex', position: 'relative' }}>
           <Grid container spacing={5}>
             <Grid item xs={12} md={10}>
@@ -55,7 +52,7 @@ const Dashboard = () => {
               </Box>
               <Box>
                 <Typography sx={{ display: 'flex', paddingLeft: 5 }} variant='subtitle1'>
-                  Seus projetos mais recentes:
+                  {projects.length > 0 ? 'Seus projetos mais recentes:' : 'Adicione novos projetos'}
                 </Typography>
                 <ProjectsCards projects={limitedProjects} />
               </Box>
@@ -63,7 +60,6 @@ const Dashboard = () => {
           </Grid>
         </Container>
       </Box>
-
     </>
   )
 }

@@ -47,7 +47,7 @@ const ForgotPassword = () => {
     }
   };
 
-  function handleInicial(){
+  function handleInicial() {
     navigate('/')
   }
 
@@ -76,6 +76,11 @@ const ForgotPassword = () => {
                   {loading ? <CircularProgress size={50} color='secondary' /> : 'Enviar Senha'} {/* conditionally render CircularProgress */}
                 </Button>
                 <Grid container>
+                  <Grid item xs>
+                    <Link href="/ForgotUser" variant="body2" style={{ textDecoration: 'none' }}>
+                      {"Esqueceu o Usuario?"}
+                    </Link>
+                  </Grid>
                   <Grid item>
                     <Link href="/Register" variant="body2" style={{ textDecoration: 'none' }}>
                       {"Não possui uma conta? Registre-se"}
